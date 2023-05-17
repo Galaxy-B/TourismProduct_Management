@@ -1,0 +1,52 @@
+# Project: TourismProduct
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = ../complicated/exceptio.o ../complicated/genlib.o ../complicated/graphics.o ../complicated/linkedlist.o ../complicated/random.o ../complicated/simpio.o ../complicated/strlib.o ../complicated/imgui.o ../complicated/main.o
+LINKOBJ  = ../complicated/exceptio.o ../complicated/genlib.o ../complicated/graphics.o ../complicated/linkedlist.o ../complicated/random.o ../complicated/simpio.o ../complicated/strlib.o ../complicated/imgui.o ../complicated/main.o
+LIBS     = -L"D:/C language/Dev-Cpp/MinGW64/lib" -L"D:/C language/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows -g3
+INCS     = -I"D:/C language/Dev-Cpp/MinGW64/include" -I"D:/C language/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/C language/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"../libgraphics" -I"../simpleGUI"
+CXXINCS  = -I"D:/C language/Dev-Cpp/MinGW64/include" -I"D:/C language/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/C language/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/C language/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"../libgraphics" -I"../simpleGUI"
+BIN      = ../TourismProduct.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+../complicated/exceptio.o: ../libgraphics/exceptio.c
+	$(CC) -c ../libgraphics/exceptio.c -o ../complicated/exceptio.o $(CFLAGS)
+
+../complicated/genlib.o: ../libgraphics/genlib.c
+	$(CC) -c ../libgraphics/genlib.c -o ../complicated/genlib.o $(CFLAGS)
+
+../complicated/graphics.o: ../libgraphics/graphics.c
+	$(CC) -c ../libgraphics/graphics.c -o ../complicated/graphics.o $(CFLAGS)
+
+../complicated/linkedlist.o: ../libgraphics/linkedlist.c
+	$(CC) -c ../libgraphics/linkedlist.c -o ../complicated/linkedlist.o $(CFLAGS)
+
+../complicated/random.o: ../libgraphics/random.c
+	$(CC) -c ../libgraphics/random.c -o ../complicated/random.o $(CFLAGS)
+
+../complicated/simpio.o: ../libgraphics/simpio.c
+	$(CC) -c ../libgraphics/simpio.c -o ../complicated/simpio.o $(CFLAGS)
+
+../complicated/strlib.o: ../libgraphics/strlib.c
+	$(CC) -c ../libgraphics/strlib.c -o ../complicated/strlib.o $(CFLAGS)
+
+../complicated/imgui.o: ../simpleGUI/imgui.c
+	$(CC) -c ../simpleGUI/imgui.c -o ../complicated/imgui.o $(CFLAGS)
+
+../complicated/main.o: ../codes/main.c
+	$(CC) -c ../codes/main.c -o ../complicated/main.o $(CFLAGS)
